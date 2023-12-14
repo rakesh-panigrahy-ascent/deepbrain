@@ -18,7 +18,13 @@ nlu:
     - hello, my name is [Rakesh](user_name)
     - hi, I am [Ratan](user_name)
     - hey, [Mohan](user_name) this side
-    - it is [dollo](product_name)
+    - hello, my name is [Viren](user_name)
+    - hi, I am [Darshan](user_name)
+    - hey, [Akshay](user_name) this side
+    - hello, my name is [Manas](user_name)
+    - hi, I am [Dhiraj](user_name)
+    - hey, [Jitu](user_name) this side
+    - hey [Gaurav](user_name) this side
 - intent: goodbye
   examples: |
     - cu
@@ -64,6 +70,7 @@ nlu:
     - so so perfect
     - so good
     - so perfect
+    - good
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -92,7 +99,7 @@ nlu:
     - what is the status of my order?
     - when my order will get delivered?
     - i want to know the status of my order?
-    - My order id is 12345 where it is?
+    - My order id is [12345](order_id) where it is?
     - I want to track my order and my order is [87675](order_id)
     - what is the status of [57545](order_id)?
 - intent: item_availability_check
@@ -113,3 +120,9 @@ nlu:
 - intent: thanks
   examples: |
     - [ok thanks](thanks)
+- intent: out_of_scope
+  examples: |
+    - I want to order food
+    - What is 2 + 2?
+    - Who's the US President?
+

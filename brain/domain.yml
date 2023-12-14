@@ -12,9 +12,9 @@ intents:
 - order_delivery_status_enquiry
 - thanks
 entities:
-- thanks
-- product_name
 - user_name
+- order_id
+- product_name
 slots:
   user_name:
     type: any
@@ -31,10 +31,21 @@ slots:
       entity: product_name
       conditions:
       - active_loop: product_name_form
+  order_id:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: order_id
+      condition:
+      - active_loop: order_status_form
 forms:
   product_name_form:
     required_slots:
     - product_name
+  order_status_form:
+    required_slots:
+    - order_id
 responses:
   utter_greet:
   - text: Hey! How are you?
@@ -57,17 +68,30 @@ responses:
   utter_ask_product_name:
   - text: Which product you want to buy?
   - text: Please mention the product name.
+  utter_ask_order_id:
+  - text: what is the order id?
+  - text: May I have your order id?
   utter_welcome:
   - text: you are welcome!
   - text: Happy to assist you!
+  utter_out_of_scope:
+  - text: Sorry, I can't handle that request.
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+  utter_default:
+  - text: I'm sorry, I can't help you.
+  utter_ask_for_order_placement:
+  - text: 'Do you want me to order {product_name} for you? '
 actions:
-- welcome
 - utter_greet
+- utter_happy
+- welcome
 - action_item_availability_check
 - utter_order_status
 - utter_is_satified
 - utter_ask_product_name
 - action_cancel_order
+- action_order_status_check
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

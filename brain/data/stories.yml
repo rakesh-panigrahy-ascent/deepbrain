@@ -2,38 +2,26 @@ version: "3.1"
 
 stories:
 
-- story: happy path
+- story: greet
   steps:
   - intent: greet
+    entities:
+    - user_name: rakesh
   - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
 
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
-
-- story: order status enquiry 1
+- story: order status 1
   steps:
   - intent: order_delivery_status_enquiry
-  - action: utter_order_status
-  - action: utter_is_satified
+  - action: order_status_form
+  - active_loop: order_status_form
+  - slot_was_set:
+    - requested_slot: order_id
+  - slot_was_set:
+    - order_id: 12343
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_order_status_check
 
 - story: is item available 1
   steps:
