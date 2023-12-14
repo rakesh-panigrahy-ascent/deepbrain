@@ -1,5 +1,4 @@
 version: "3.1"
-
 nlu:
 - intent: greet
   examples: |
@@ -19,7 +18,7 @@ nlu:
     - hello, my name is [Rakesh](user_name)
     - hi, I am [Ratan](user_name)
     - hey, [Mohan](user_name) this side
-
+    - it is [dollo](product_name)
 - intent: goodbye
   examples: |
     - cu
@@ -32,7 +31,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: affirm
   examples: |
     - yes
@@ -41,7 +39,6 @@ nlu:
     - of course
     - that sounds good
     - correct
-
 - intent: deny
   examples: |
     - no
@@ -51,7 +48,6 @@ nlu:
     - don't like that
     - no way
     - not really
-
 - intent: mood_great
   examples: |
     - perfect
@@ -68,7 +64,6 @@ nlu:
     - so so perfect
     - so good
     - so perfect
-
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -85,34 +80,36 @@ nlu:
     - extremly sad
     - so saad
     - so sad
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
 - intent: order_delivery_status_enquiry
   examples: |
     - where is my order?
     - what is the status of my order?
     - when my order will get delivered?
     - i want to know the status of my order?
-    - My order id is [12345][order_id] where it is?
+    - My order id is 12345 where it is?
     - I want to track my order and my order is [87675](order_id)
     - what is the status of [57545](order_id)?
-
 - intent: item_availability_check
   examples: |
     - i want to buy an item
     - Is [dolo 650](product_name) available?
     - Need [10 strips of crocin tablet](product_name)
     - want [neosprin powder](product_name)
-
+    - i wan to buy an item
+    - [crocin](product_name)
+    - i want to buy an medicine
 - intent: order_cancellation
   examples: |
     - i want to cancel the order
     - order got delayed so i want the return
     - I don't want the order any more
     - my order id is [34524](order_id) and i want to cancel it
+- intent: thanks
+  examples: |
+    - [ok thanks](thanks)

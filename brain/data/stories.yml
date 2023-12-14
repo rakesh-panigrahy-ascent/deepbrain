@@ -58,3 +58,49 @@ stories:
 
 
 
+
+- story: interactive_story_2
+  steps:
+  - intent: item_availability_check
+  - action: product_name_form
+  - active_loop: product_name_form
+  - slot_was_set:
+    - requested_slot: product_name
+  - intent: item_availability_check
+    entities:
+    - product_name: crocin
+  - slot_was_set:
+    - product_name: crocin
+  - action: product_name_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_item_availability_check
+  - intent: goodbye
+  - action: utter_goodbye
+
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: item_availability_check
+  - action: product_name_form
+  - active_loop: product_name_form
+  - slot_was_set:
+    - requested_slot: product_name
+  - intent: greet
+    entities:
+    - product_name: dollo
+  - slot_was_set:
+    - product_name: dollo
+  - action: product_name_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_item_availability_check
+  - intent: deny
+  - intent: thanks
+    entities:
+    - thanks: ok thanks
+  - action: utter_welcome
