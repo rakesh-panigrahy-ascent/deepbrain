@@ -99,7 +99,9 @@ nlu:
     - what is the status of my order?
     - when my order will get delivered?
     - i want to know the status of my order?
-    - My order id is 123 where it is?
+    - My order id is [12345][order_id] where it is?
+    - I want to track my order and my order is [87675](order_id)
+    - what is the status of [57545](order_id)?
 
 - intent: item_availability_check
   examples: |
@@ -107,3 +109,10 @@ nlu:
     - Is [dolo 650](product_name) available?
     - Need [10 strips of crocin tablet](product_name)
     - want [neosprin powder](product_name)
+
+  - intent: order_cancellation
+  examples: |
+    - i want to cancel the order
+    - order got delayed so i want the return
+    - I don't want the order any more
+    - my order id is [34524] and i want to cancel it
