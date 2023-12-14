@@ -36,3 +36,11 @@ stories:
   - intent: order_delivery_status_enquiry
   - action: utter_order_status
   - action: utter_is_satified
+
+- story: is item available
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: item_availability_check
+  - slot_was_set:
+    - product_name: Evion 400mg Strip

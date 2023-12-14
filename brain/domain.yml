@@ -1,7 +1,7 @@
 version: "3.1"
 
 intents:
-  - greet
+  - greet  
   - goodbye
   - affirm
   - deny
@@ -9,28 +9,32 @@ intents:
   - mood_unhappy
   - bot_challenge
   - order_delivery_status_enquiry
+  - item_availability_check
+
+entities:
+  - user_name
+  - product_name
 
 slots:
-  name:
+  user_name:
     type: any
-  order_id:
-    type: any
-  order_date:
-    type: date
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: user_name
+
   product_name:
     type: text
     influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: product_name
 
-entities:
-  - product_name
-  - order_id
-  - order_name
-  - user_name
 
 responses:
   utter_greet:
   - text: "Hey! How are you?"
-  - text: 'Hello {name}! How are you?'
+  - text: 'Hello {user_name}! How are you?'
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
@@ -53,6 +57,9 @@ responses:
 
   utter_is_satified:
   - text: "Are you happy with the answer?"
+
+  utter_is_product_available:
+  - text: "We have {product_name} available in our bucket"
 
 session_config:
   session_expiration_time: 60

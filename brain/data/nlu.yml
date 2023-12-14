@@ -16,8 +16,9 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-    - hello, my name is [Rakesh](name)
-    - hi, I am [Ratan]
+    - hello, my name is [Rakesh](user_name)
+    - hi, I am [Ratan](user_name)
+    - hey, [Mohan](user_name) this side
 
 - intent: goodbye
   examples: |
@@ -99,3 +100,10 @@ nlu:
     - when my order will get delivered?
     - i want to know the status of my order?
     - My order id is 123 where it is?
+
+- intent: item_availability_check
+  examples: |
+    - i want to buy an item
+    - Is [dolo 650](product_name) available?
+    - Need [10 strips of crocin tablet](product_name)
+    - want [neosprin powder](product_name)
