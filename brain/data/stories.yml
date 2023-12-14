@@ -42,5 +42,8 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: item_availability_check
-  - slot_was_set:
-    - product_name: Evion 400mg Strip
+  - or:
+    - slot_was_set:
+      - product_name: Evion 400mg Strip
+    - slot_was_set:
+      - product_name: vaseline
