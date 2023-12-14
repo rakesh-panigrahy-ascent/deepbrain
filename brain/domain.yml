@@ -10,6 +10,7 @@ intents:
   - bot_challenge
   - order_delivery_status_enquiry
   - item_availability_check
+  - order_cancellation
 
 entities:
   - user_name
@@ -19,6 +20,7 @@ slots:
   user_name:
     type: any
     influence_conversation: false
+    initial_value: friend
     mappings:
     - type: from_entity
       entity: user_name
@@ -29,6 +31,13 @@ slots:
     mappings:
     - type: from_entity
       entity: product_name
+      conditions:
+      - active_loop: product_name_form
+
+forms:
+  product_name_form:
+    required_slots:
+    - product_name
 
 
 responses:
@@ -58,9 +67,12 @@ responses:
   utter_is_satified:
   - text: "Are you happy with the answer?"
 
-  utter_is_product_available:
-  - text: "We have {product_name} available in our bucket"
+  # utter_is_product_available:
+  # - text: "We have {product_name} available in our bucket"
 
+actions:
+- action_item_availability_check
+- action_cancel_order
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

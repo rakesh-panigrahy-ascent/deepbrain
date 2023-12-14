@@ -38,18 +38,23 @@ stories:
 - story: is item available 1
   steps:
   - intent: item_availability_check
+  - action: product_name_form
+  - active_loop: product_name_form
+  - slot_was_set:
+    - requested_slot: product_name
   - slot_was_set:
     - product_name: vaseline
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
   - action: action_item_availability_check
 
 - story: order cancellation 1
   steps:
-  - intent: check_the_placed_orders
+  - intent: order_cancellation
   - slot_was_set:
     - product_name: order_id
   - action: action_cancel_order
-
-
 
 
 

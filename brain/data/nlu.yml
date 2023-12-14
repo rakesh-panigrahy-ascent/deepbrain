@@ -110,9 +110,9 @@ nlu:
     - Need [10 strips of crocin tablet](product_name)
     - want [neosprin powder](product_name)
 
-  - intent: order_cancellation
+- intent: order_cancellation
   examples: |
     - i want to cancel the order
     - order got delayed so i want the return
     - I don't want the order any more
-    - my order id is [34524] and i want to cancel it
+    - my order id is [34524](order_id) and i want to cancel it

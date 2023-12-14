@@ -11,3 +11,20 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Active form
+  steps:
+  - intent: item_availability_check
+  - action: product_name_form
+  - active_loop: product_name_form
+
+- rule: Submit form
+  condition:
+  - active_loop: product_name_form
+  steps:
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_item_availability_check  
+
+
