@@ -16,6 +16,8 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
+    - hello, my name is [Rakesh](name)
+    - hi, I am [Ratan]
 
 - intent: goodbye
   examples: |
@@ -89,3 +91,11 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: order_delivery_status_enquiry
+  examples: |
+    - where is my order?
+    - what is the status of my order?
+    - when my order will get delivered?
+    - i want to know the status of my order?
+    - My order id is 123 where it is?

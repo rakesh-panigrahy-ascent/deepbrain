@@ -8,10 +8,29 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - order_delivery_status_enquiry
+
+slots:
+  name:
+    type: any
+  order_id:
+    type: any
+  order_date:
+    type: date
+  product_name:
+    type: text
+    influence_conversation: true
+
+entities:
+  - product_name
+  - order_id
+  - order_name
+  - user_name
 
 responses:
   utter_greet:
   - text: "Hey! How are you?"
+  - text: 'Hello {name}! How are you?'
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
@@ -28,6 +47,12 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_order_status:
+  - text: "Your order is on the way"
+
+  utter_is_satified:
+  - text: "Are you happy with the answer?"
 
 session_config:
   session_expiration_time: 60

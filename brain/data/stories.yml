@@ -28,3 +28,11 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+- story: order status enquiry
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: order_delivery_status_enquiry
+  - action: utter_order_status
+  - action: utter_is_satified
