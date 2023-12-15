@@ -48,8 +48,14 @@ forms:
     - order_id
 responses:
   utter_greet:
-  - text: Hey! How are you?
-  - text: Hello {user_name}! How are you?
+  - text: Hey! How can I help you?
+    image: "https://cdn-icons-png.flaticon.com/512/1698/1698535.png"
+    buttons:
+      - title: "Track orders"
+        payload: "/track_orders"
+      - title: "Check items"
+        payload: "/check_items"
+  - text: Hello {user_name}! How can I assist you with?
   utter_cheer_up:
   - text: 'Here is something to cheer you up:'
     image: https://i.imgur.com/nGF1K8f.jpg
