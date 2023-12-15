@@ -92,6 +92,8 @@ actions:
 - utter_ask_product_name
 - action_cancel_order
 - action_order_status_check
+- action_out_of_scope
+- action_classify_intent
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

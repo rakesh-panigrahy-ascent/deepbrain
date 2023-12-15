@@ -14,18 +14,26 @@ from rasa_sdk.executor import CollectingDispatcher
 from typing import Any, Dict, List, Text
 
 from rasa_sdk.events import UserUtteranceReverted, ConversationPaused, FollowupAction
+from utils import ask_llm
 
 
-class ActionHelloWorld(Action):
+
+
+class ClassifyIntent(Action):
 
     def name(self) -> Text:
-        return "action_hello_world"
+        return "action_classify_intent"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        ranking = tracker.latest_message['intent_ranking']
 
-        dispatcher.utter_message(text="Hello World!")
+        for intent in ranking:
+            name = intent['name']
+            confidence = int(intent['confidence']*100)
+            print(f'Confidence of intent {name} is {confidence}%.')
+        # dispatcher.utter_message(text="Hello World!")
 
         return []
     
@@ -62,6 +70,26 @@ class ActionOrderStatusCheck(Action):
             dispatcher.utter_message(text=f'No order id found!')
 
         return []
+    
+class ActionOutOfScope(Action):
+
+    def name(self) -> Text:
+        return "action_out_of_scope"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        user_message =  tracker.latest_message
+
+        if user_message:
+            response = ask_llm(user_message, channel='huggingface')
+            # print(user_message)
+            # response = 'test'
+            dispatcher.utter_message(text=response)
+        else:
+            dispatcher.utter_message(text=f'Currently I am not able to answer it! I am still learning...')
+
+        return []
 
 class ActionDefaultFallback(Action):
     def name(self) -> Text:
@@ -82,7 +110,6 @@ class ActionDefaultFallback(Action):
         # call_customer_service(tracker)
         latest_message = tracker.latest_message
         dispatcher.utter_message(text=f"your message {latest_message} is being passed to open ai bot...")
-
      
         # pause the tracker so that the bot stops responding to user input
         return [ConversationPaused(), UserUtteranceReverted()]

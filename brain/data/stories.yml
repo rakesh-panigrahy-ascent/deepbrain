@@ -37,12 +37,12 @@ stories:
   - active_loop: null
   - action: action_item_availability_check
 
-- story: order cancellation 1
-  steps:
-  - intent: order_cancellation
-  - slot_was_set:
-    - product_name: order_id
-  - action: action_cancel_order
+# - story: order cancellation 1
+#   steps:
+#   - intent: order_cancellation
+#   - slot_was_set:
+#     - product_name: order_id
+#   - action: action_cancel_order
 
 
 
